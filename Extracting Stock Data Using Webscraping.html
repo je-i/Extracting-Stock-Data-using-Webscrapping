@@ -1,0 +1,645 @@
+
+<!-- saved from url=(0110)https://labs.cognitiveclass.ai/tools/jupyterlab/lab/tree/labs/PY0220EN/Final_Assignment_Library.ipynb?lti=true -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="application/javascript" async="" defer="" src="./Extracting Stock Data Using Webscraping_files/track.js.download"></script><script crossorigin="anonymous" integrity="sha256-lAQ5nv5ccM7KIC74iLxRVko0a90XkpiyKZV9p4Bx1HY=" type="text/javascript" src="./Extracting Stock Data Using Webscraping_files/appcues.main.3992bf95297aa4ddca5b63b20c9022fb8272530e.js.download" async=""></script><script type="text/javascript" async="" src="./Extracting Stock Data Using Webscraping_files/O5SLs1K1RfWhBYkHvMaXTg.js.download"></script><script async="" src="./Extracting Stock Data Using Webscraping_files/analytics.js.download"></script><script async="" src="./Extracting Stock Data Using Webscraping_files/l.js.download"></script><script src="./Extracting Stock Data Using Webscraping_files/37753.js.download" defer=""></script><style type="text/css" media="screen">.uv-icon{box-sizing:border-box;display:inline-block;cursor:pointer;position:relative;transition:all 300ms;width:39px;height:39px;position:fixed;z-index:100002;opacity:0.8;transition:opacity 100ms}.uv-icon.uv-bottom-right{bottom:10px;right:12px}.uv-icon.uv-top-right{top:10px;right:12px}.uv-icon.uv-bottom-left{bottom:10px;left:12px}.uv-icon.uv-top-left{top:10px;left:12px}.uv-icon.uv-is-selected{opacity:1}.uv-icon svg{width:39px;height:39px}.uv-icon .uv-tooltip-container{position:relative}.uv-icon .uv-tooltip-container .uv-icon-tooltip{display:none;position:absolute;height:20px;padding:4px 8px;background-color:#464653;color:white;font-size:12px;border-radius:4px;line-height:18px;font-family:"Open Sans", sans-serif;white-space:nowrap}.uv-icon .uv-tooltip-container .uv-icon-tooltip.left,.uv-icon .uv-tooltip-container .uv-icon-tooltip.right{top:0;bottom:0;margin:auto 10px}.uv-icon .uv-tooltip-container .uv-icon-tooltip.top,.uv-icon .uv-tooltip-container .uv-icon-tooltip.bottom{transform:translate(-30%);margin:10px auto}.uv-icon .uv-tooltip-container .uv-icon-tooltip.top{bottom:100%}.uv-icon .uv-tooltip-container .uv-icon-tooltip.bottom{top:100%}.uv-icon .uv-tooltip-container .uv-icon-tooltip.left{right:100%}.uv-icon .uv-tooltip-container .uv-icon-tooltip.right{left:100%}.uv-icon .uv-tooltip-container:hover .uv-icon-tooltip{display:block}.uv-icon-trigger{display:block;width:39px;height:39px;border:none;padding:0;cursor:pointer;background:none}.uv-popover{font-family:sans-serif;font-weight:100;font-size:13px;color:black;position:fixed;z-index:100001}.uv-popover-content{border-radius:5px;background:white;border:1px solid transparent;position:relative;width:325px;height:325px;transition:background 200ms}.uv-bottom .uv-popover-content{box-shadow:rgba(0,0,0,0.3) 0 -10px 60px,rgba(0,0,0,0.1) 0 0 20px}.uv-top .uv-popover-content{box-shadow:rgba(0,0,0,0.3) 0 10px 60px,rgba(0,0,0,0.1) 0 0 20px}.uv-left .uv-popover-content{box-shadow:rgba(0,0,0,0.3) 10px 0 60px,rgba(0,0,0,0.1) 0 0 20px}.uv-right .uv-popover-content{box-shadow:rgba(0,0,0,0.3) -10px 0 60px,rgba(0,0,0,0.1) 0 0 20px}.uv-ie8 .uv-popover-content{position:relative}.uv-ie8 .uv-popover-content .uv-popover-content-shadow{display:block;background:black;content:'';position:absolute;left:-15px;top:-15px;width:100%;height:100%;filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius=15,MakeShadow=true,ShadowOpacity=0.30);z-index:-1}.uv-popover-tail{border:9px solid transparent;width:0;z-index:10;position:absolute;transition:border-top-color 200ms}.uv-top .uv-popover-tail{bottom:-20px;border-top:11px solid white}.uv-bottom .uv-popover-tail{top:-20px;border-bottom:11px solid white}.uv-left .uv-popover-tail{right:-20px;border-left:11px solid white}.uv-right .uv-popover-tail{left:-20px;border-right:11px solid white}.uv-popover-loading{background:white;border-radius:5px;position:absolute;width:100%;height:100%;left:0;top:0}.uv-popover-loading-text{position:absolute;top:50%;margin-top:-0.5em;width:100%;text-align:center}.uv-popover-iframe-container{height:100%}.uv-popover-iframe{border-radius:5px;overflow:hidden}.uv-is-hidden{display:none}.uv-is-invisible{display:block !important;visibility:hidden !important}.uv-is-transitioning{display:block !important}.uv-no-transition{transition:none !important}.uv-fade{opacity:1;transition:opacity 200ms ease-out}.uv-fade.uv-is-hidden{opacity:0}.uv-scale-top,.uv-scale-top-left,.uv-scale-top-right,.uv-scale-bottom,.uv-scale-bottom-left,.uv-scale-bottom-right,.uv-scale-right,.uv-scale-right-top,.uv-scale-right-bottom,.uv-scale-left,.uv-scale-left-top,.uv-scale-left-bottom,.uv-slide-top,.uv-slide-bottom,.uv-slide-left,.uv-slide-right{opacity:1;transition:all 80ms ease-out}.uv-scale-top.uv-is-hidden{opacity:0;transform:scale(0.8) translateY(-15%)}.uv-scale-top-left.uv-is-hidden{opacity:0;transform:scale(0.8) translateY(-15%) translateX(-10%)}.uv-scale-top-right.uv-is-hidden{opacity:0;transform:scale(0.8) translateY(-15%) translateX(10%)}.uv-scale-bottom.uv-is-hidden{opacity:0;transform:scale(0.8) translateY(15%)}.uv-scale-bottom-left.uv-is-hidden{opacity:0;transform:scale(0.8) translateY(15%) translateX(-10%)}.uv-scale-bottom-right.uv-is-hidden{opacity:0;transform:scale(0.8) translateY(15%) translateX(10%)}.uv-scale-right.uv-is-hidden{opacity:0;transform:scale(0.8) translateX(15%)}.uv-scale-right-top.uv-is-hidden{opacity:0;transform:scale(0.8) translateX(15%) translateY(-10%)}.uv-scale-right-bottom.uv-is-hidden{opacity:0;transform:scale(0.8) translateX(15%) translateY(10%)}.uv-scale-left.uv-is-hidden{opacity:0;transform:scale(0.8) translateX(-15%)}.uv-scale-left-top.uv-is-hidden{opacity:0;transform:scale(0.8) translateX(-15%) translateY(-10%)}.uv-scale-left-bottom.uv-is-hidden{opacity:0;transform:scale(0.8) translateX(-15%) translateY(10%)}.uv-slide-top.uv-is-hidden{transform:translateY(-100%)}.uv-slide-bottom.uv-is-hidden{transform:translateY(100%)}.uv-slide-left.uv-is-hidden{transform:translateX(-100%)}.uv-slide-right.uv-is-hidden{transform:translateX(100%)}
+</style><style type="text/css" media="print">#uvTab,.uv-tray,.uv-icon,.uv-popover,.uv-bubble{display:none!important}</style><iframe src="./Extracting Stock Data Using Webscraping_files/saved_resource.html"></iframe><iframe src="./Extracting Stock Data Using Webscraping_files/saved_resource(1).html"></iframe><iframe src="./Extracting Stock Data Using Webscraping_files/saved_resource(2).html"></iframe><link rel="stylesheet" type="text/css" integrity="sha256-q9sKb2HpA5fJjN1cK9LjLaEXff5ix81Rv1Y3xJFptPE=" crossorigin="anonymous" href="./Extracting Stock Data Using Webscraping_files/container.3992bf95297aa4ddca5b63b20c9022fb8272530e.css"><iframe src="./Extracting Stock Data Using Webscraping_files/saved_resource(3).html"></iframe></head><body><nav class="navbar navbar-inverse navbar-fixed-top" style="margin-bottom: 0; font-weight: normal; height: 50px;">
+    <div class="container-fluid">
+
+        <div class="navbar-left pull-left">
+            <a href="https://labs.cognitiveclass.ai/tools/jupyterlab/lab/tree/labs/PY0220EN/Final_Assignment_Library.ipynb?lti=true#menu-toggle" id="menu-toggle" aria-label="Open the Labs menu">
+                <span class="fa fa-bars fa-2x" style="padding-top: 12px; color: #ccc; display: inline-block" aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-header pull-left" style="margin-left: 0">
+            <span class="navbar-brand" style="margin-left: 0; color: #ccc">Skills Network Labs</span>
+        </div>
+        <div class="navbar-header pull-left" style="margin-left: 20px;">
+            <div id="navbar-logo-divider" style="display: none; border-left: 2px solid #ccc;position: absolute;top: 25%;bottom: 25%;"></div>
+            <span id="navbar-logo-wrapper" class="navbar-brand" style="margin-left: 0;"></span>
+        </div>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li id="whatsnew" aria-hidden="true" title="What&#39;s New" style="padding-right:5rem; padding-top:1.25rem;"><div id="noticeable-widget" style="position: relative; margin-top: 0px;"><iframe frameborder="1" height="0" scrolling="no" tabindex="-1" title="Noticeable Trigger" width="0" class="noticeable-trigger-view" src="./Extracting Stock Data Using Webscraping_files/saved_resource(4).html" style="border: 0px; opacity: 1; overflow: hidden; user-select: none; visibility: visible; height: 24px; margin-top: 0px; width: 51px; z-index: 2147482942;"></iframe></div></li>
+            <li id="notifications-button" class="dropdown" aria-hidden="true" title="Notifications">
+            <span style="display: none;">Notifications</span>
+                <a href="https://labs.cognitiveclass.ai/tools/jupyterlab/lab/tree/labs/PY0220EN/Final_Assignment_Library.ipynb?lti=true#notifications" class="dropdown-toggle" data-toggle="dropdown" style="padding-top: 15px; display: inline-block">
+                    <span id="notifications_count" class="badge" style="font-size:10px;"></span>
+                    <span class="fa fa-bell fa-lg"></span>
+                </a>
+                <ul id="notifications" class="dropdown-menu" style="background-color: #222222">
+                    <li class="no-notifications"> You don't have any notifications. </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" id="dropdown" data-toggle="dropdown" href="https://labs.cognitiveclass.ai/tools/jupyterlab/lab/tree/labs/PY0220EN/Final_Assignment_Library.ipynb?lti=true#">Account<span class="caret"></span></a>
+                <ul class="dropdown-menu" style="background-color: #222222">
+                    <li><a href="https://labs.cognitiveclass.ai/profile">Profile</a></li>
+                    <li><a href="https://labs.cognitiveclass.ai/session_history">Session History</a></li>
+                    <li><a href="https://labs.cognitiveclass.ai/logout" class="hyperlink">Logout</a></li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+<style>
+
+    /* begin notifications-related css */
+    #notifications {
+      min-width: 550px;
+    }
+
+    #mark_all_read {
+        color: #9d9d9d;
+        cursor: pointer;
+    }
+
+    #mark_all_read:hover {
+        color: white;
+    }
+
+    #notifications .notification {
+        padding: 5px 20px;
+        border: 1px solid black;
+        color: black;
+        background-color: white;
+    }
+
+    #notifications .no-notifications {
+        padding: 12px 20px;
+        border: 1px solid black;
+        color: black;
+        background-color: white;
+        text-align: center;
+    }
+
+    #notifications .notification.read {
+        background-color: #AFAFAF;
+    }
+
+    #previous_notifications {
+        color: #9d9d9d;
+        text-align: center;
+        padding: 5px;
+    }
+
+    .badge {
+        float: inline-start;
+        background:#fa3e3e !important;
+        position:relative;
+        top: -5px;
+        left: 10px;
+    }
+
+    a:hover .badge {
+        background:#ff7e7e;
+    }
+    /* end notifications-related css */
+
+    .navbar-default .navbar-nav > li.dropdown:hover > a,
+    .navbar-default .navbar-nav > li.dropdown:hover > a:hover,
+    .navbar-default .navbar-nav > li.dropdown:hover > a:focus {
+        background-color: rgb(34, 34, 34);
+        color: rgb(85, 85, 85);
+    }
+
+    .navbar-collapse.collapse {
+        display: block !important;
+    }
+
+    .navbar-collapse{
+        margin-left: 0 !important;
+    }
+
+    .navbar-nav>li, .navbar-nav {
+        float: left !important;
+    }
+
+    .navbar-nav.navbar-right:last-child {
+        margin-right: -15px !important;
+    }
+
+    .navbar-right {
+        float: right!important;
+    }
+
+    li.dropdown:hover > .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-menu > li > a {
+        color: #CDCDCD !important;
+    }
+
+    .navbar-inverse .navbar-nav>li>a {
+        color: #ccc;
+    }
+
+</style>
+<script>
+  var branding_color_background = window.sessionStorage.getItem("branding_color_background")
+  var branding_color_text = window.sessionStorage.getItem("branding_color_text")
+  var branding_logo = window.sessionStorage.getItem("branding_logo")
+
+  if (branding_color_background && branding_color_text) {
+    console.log("applying branding")
+    var sheet = document.createElement("style");
+    sheet.innerHTML = "\
+    nav.navbar {background-color: " + branding_color_background + " !important;} \
+    nav.navbar span[style], nav.navbar a[style], nav.navbar a {color: white !important;}"
+    console.log(sheet)
+    document.body.appendChild(sheet)
+  }
+if (branding_logo) {
+  var logo = document.createElement("img");
+  logo.src = branding_logo;
+  logo.style = "height: 50px; position: absolute; margin: auto; height: 20px; padding-left: 15px"
+  document.querySelector("#navbar-logo-wrapper").append(logo)
+  document.querySelector("#navbar-logo-divider").style.display = "";
+
+
+}
+</script>
+
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Labs environment for data science with Jupyter, R, and Scala.">
+    <script>
+      !function(){'use strict';var e=['debug','destroy','do','help','identify','is','off','on','ready','render','reset','safe','set'],t=window.noticeable=window.noticeable||[];function n(e){return function(){var n=Array.prototype.slice.call(arguments);return n.unshift(e),t.push(n),t}}t.version='2.0.0',function(){for(var r=0;r<e.length;r++){var i=e[r];t[i]=n(i)}}(),function(){var e=document.createElement('script');e.async=!0,e.src='https://sdk.noticeable.io/l.js';var t=document.head;t.insertBefore(e,t.firstChild)}()}();
+      noticeable.render('widget', 'nOM8V6pxGhAI0jP0Pdl5');
+    </script>
+    <title></title>
+    
+      <script>
+          var DEFAULT_HEARTBEAT_TIME = 120;
+          console.log("Persisting DEFAULT_HEARTBEAT_TIME as " + DEFAULT_HEARTBEAT_TIME);
+          var INACTIVE_LOGOUT_TIME = 30;
+      </script>
+    
+
+    
+  <link rel="stylesheet" type="text/css" href="./Extracting Stock Data Using Webscraping_files/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="./Extracting Stock Data Using Webscraping_files/app.min.css">
+  <link rel="icon" type="image/png" href="https://labs.cognitiveclass.ai/static/images/favicon_16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="https://labs.cognitiveclass.ai/static/images/favicon_32x32.png" sizes="32x32">
+  <link rel="shortcut icon" href="https://labs.cognitiveclass.ai/static/images/favicon.ico">
+
+
+    
+
+    
+      <!-- start Google Analytics -->
+      <script defer="">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-1433936-16', 'auto');
+        ga('send', 'pageview');
+      </script>
+      <!-- end Google Analytics -->
+    
+
+
+    
+      <meta name="google-site-verification" content="">
+    
+
+    
+      <script type="text/javascript" src="./Extracting Stock Data Using Webscraping_files/raven.min.js.download" defer=""></script>
+      <script defer="">
+        // Once everything including subframes and stylesheets is loaded
+        window.addEventListener('load', function(){
+          function configureRaven() {
+            Raven.config('https://b052ab88487148ac9ff6eed308fd111b@sentry.skills.network/4', {
+              logger: 'monocle-frontend'
+            }).install();
+          }
+
+          if (Raven) {
+            configureRaven();
+          } else {
+            setTimeout(function(){ configureRaven(); }, 500);
+          }
+        });
+      </script>
+    
+
+    <script type="text/javascript" src="./Extracting Stock Data Using Webscraping_files/es5.min.js.download" defer=""></script>
+    <script src="./Extracting Stock Data Using Webscraping_files/browser-support-check.js.download" defer="">
+    </script>
+
+    
+      <!-- Inactivity session prompt start-->
+      <script>
+        var INACTIVITY_SESSION_ENABLED = JSON.parse('true');
+      </script>
+
+      <!-- Inactivity session prompt end -->
+    
+
+    
+      <!-- Add CC portal urls into authorized domain list -->
+      <script>
+        var AUTHORIZED_PORTAL_LIST = JSON.parse('["https://courses.407etr.skillsnetwork.site/", "https://500startups.courses.cognitiveclass.ai/", "https://courses.6789.skillsnetwork.site/", "https://courses.aa-skillscloud.skillsnetwork.site/", "https://courses.abi.skillsnetwork.site/", "https://courses.academicinitiative.cognitiveclass.ai/", "https://courses.accenture.cognitiveclass.ai/", "https://courses.acme.skillsnetwork.site/", "https://courses.acme-dev-labs-prod.portals-dev.apset.xyz/", "https://courses.acme-itl.cognitiveclass.ai/", "https://courses.acme-tor.cognitiveclass.ai/", "https://courses.acme2.skillsnetwork.site/", "https://courses.aec.skillsnetwork.site/", "https://courses.ai4health.cognitiveclass.ai/", "https://courses.aibenelux.skillsnetwork.site/", "https://courses.aicte.skillsnetwork.site/", "https://aig.courses.bigdatauniversity.com/", "https://courses.aku.skillsnetwork.site/", "https://courses.allsoftsolutions.skillsnetwork.site/", "https://courses.analytixlabs.skillsnetwork.site/", "https://courses.andy-v2.skillsnetwork.site/", "https://ann-auto-test.courses.cognitiveclass.ai/", "https://anndemo.courses.cognitiveclass.ai/", "https://anndemo3.courses.cognitiveclass.ai/", "https://courses.apdlearning.skillsnetwork.site/", "https://courses.cc.apset.xyz/", "https://courses.apskills.cognitiveclass.ai/", "https://courses.arrow.cognitiveclass.ai/", "https://courses.arya-dev.skillsnetwork.site/", "https://courses.aster-dev.skillsnetwork.site/", "https://courses.aster-dev1.skillsnetwork.site/", "https://courses.aster-test.skillsnetwork.site/", "https://courses.aster-v1.skillsnetwork.site/", "https://courses.aster-v2.skillsnetwork.site/", "https://courses.aster-v3.skillsnetwork.site/", "https://courses.atbuedu-online.skillsnetwork.site/", "https://courses.atec.skillsnetwork.site/", "https://courses.automation-test.portals-dev.apset.xyz/", "https://courses.avon.skillsnetwork.site/", "https://courses.backup-test.skillsnetwork.site/", "https://courses.bdu.bigdatarchitect.com/", "https://courses.bdu.blifutureready.org", "https://courses.ben-dev.skillsnetwork.site/", "https://courses.ben-dev1.skillsnetwork.site/", "https://courses.bibs.skillsnetwork.site/", "https://courses.skills.bigoutdoorsinc.com/", "https://bli.courses.bigdatauniversity.com/", "https://courses.bdu.blifutureready.org/", "https://courses.bnp.cognitiveclass.ai/", "https://courses.boc.skillsnetwork.site/", "https://courses.boeing.skillsnetwork.site/", "https://courses.bp2i.cognitiveclass.ai/", "https://courses.br.cognitiveclass.ai/", "https://courses.bvc.skillsnetwork.site/", "https://c2c.courses.cognitiveclass.ai/", "https://courses.testingdomain.skillsnetwork.site/", "https://courses.call4codechina.skillsnetwork.site/", "https://courses.callforcode.skillsnetwork.site/", "https://courses.canlab-cc.skillsnetwork.site/", "https://courses.cas.skillsnetwork.site/", "https://courses.casy.skillsnetwork.site/", "https://courses.cba.cognitiveclass.ai/", "https://courses.ccai.skillsnetwork.site/", "https://courses.ccai-staging.skillsnetwork.site/", "https://courses.ccea.skillsnetwork.site/", "https://courses.centrum.cognitiveclass.ai/", "https://courses.centurylink.skillsnetwork.site/", "https://courses.cestar.cognitiveclass.ai/", "https://cibc.courses.bigdatauniversity.com/", "https://courses.cic-groningen.skillsnetwork.site/", "https://courses.citi.cognitiveclass.ai/", "https://courses.cloudacademy.skillsnetwork.site/", "https://courses.bigdatauniversity.com.cn/", "https://courses.cobrian.skillsnetwork.site/", "https://courses.cognitiveclass.ai/", "https://courses.cognitivefactory.skillsnetwork.site", "https://cognizant.courses.cognitiveclass.ai/", "https://courses.commerzbank.skillsnetwork.site/", "https://cornellu.courses.cognitiveclass.ai", "https://courses.course-dev.skills.network/", "https://courses.course-dev-test.skillsnetwork.site/", "https://courses.course-dev.skills.network", "https://courses.course-dev.skills.network", "https://courses.cognitivefactory.skillsnetwork.site/", "https://courses.crescent.skillsnetwork.site/", "https://courses.cts.skillsnetwork.site/", "https://courses.ctsstage.skillsnetwork.site/", "https://courses.cu.skillsnetwork.site/", "https://courses.daniel-che01.skillsnetwork.site/", "https://courses.daniel-dallas-demo.skillsnetwork.site/", "https://courses.daniel-test-oc.skillsnetwork.site/", "https://courses.daniel-test-oc-2.skillsnetwork.site/", "https://courses.daniel-testing.skillsnetwork.site/", "https://courses.darjyo.skillsnetwork.site/", "https://courses.datasavvyngo.skillsnetwork.site/", "https://courses.datatrained.skillsnetwork.site/", "https://courses.db2.skillsnetwork.site/", "https://courses.dbs.skillsnetwork.site/", "https://courses.ddn.skillsnetwork.site/", "https://courses.default.skillsnetwork.site/", "https://courses.dibujandosonrisas.skillsnetwork.site/", "https://courses.diego-v1.skillsnetwork.site/", "https://courses.360digitmg.skillsnetwork.site/", "https://courses.disney.skillsnetwork.site/", "https://courses.dituniversity.skillsnetwork.site/", "https://courses.diverseinfluencers.skillsnetwork.site/", "https://courses.dmc.cognitiveclass.ai/", "https://courses.dresmara.skillsnetwork.site/", "https://courses.drpint.skillsnetwork.site/", "https://courses.dsai.skillsnetwork.site/", "https://courses.dsi-b.skillsnetwork.site/", "https://courses.dta.cognitiveclass.ai/", "https://courses.dtc-online.skillsnetwork.site/", "https://dxc.courses.bigdatauniversity.com/", "https://courses.skillsnet.eduvance.in/", "https://courses.eilabs.skillsnetwork.site/", "https://courses.ensimag.skillsnetwork.site/", "https://courses.entel.cognitiveclass.ai/", "https://courses.excelr.skillsnetwork.site/", "https://courses.fastlane.skillsnetwork.site/", "https://courses.favcode.courses/", "https://courses.fi.skillsnetwork.site/", "https://courses.fnuniv.cognitiveclass.ai/", "https://courses.frcc.cognitiveclass.ai/", "https://courses.futo.skillsnetwork.site/", "https://courses.futureskills.cognitiveclass.ai/", "http://courses.bdutest.galvanize.com/", "https://courses.gardencity.skillsnetwork.site/", "https://courses.gbm.skillsnetwork.site/", "https://courses.gbs-tt.skillsnetwork.site/", "https://courses.gdutwork.skillsnetwork.site/", "https://courses.geico.bigdatauniversity.com/", "https://courses.geico-it.skillsnetwork.site/", "https://courses.georgiancollege.skillsnetwork.site/", "https://courses.gep-h.skillsnetwork.site/", "https://courses.gm-itic.skillsnetwork.site/", "https://courses.gmf.skillsnetwork.site/", "https://courses.gogoschool.skillsnetwork.site/", "https://courses.greycampus.skillsnetwork.site/", "https://courses.greycampustest.skillsnetwork.site/", "https://courses.guni.skillsnetwork.site/", "https://courses.hackmit.skillsnetwork.site/", "https://courses.hcl.skillsnetwork.site/", "https://courses.helmfile-deployment.skillsnetwork.site/", "https://courses.hitam.skillsnetwork.site/", "https://courses.iag.cognitiveclass.ai/", "https://courses.ibm-developer-dev.skillsnetwork.site/", "https://courses.ibmaihardware.skillsnetwork.site/", "https://courses.ibmautomationacademy.cognitiveclass.ai/", "https://courses.ibmcep.cognitiveclass.ai/", "https://courses.ibmdeveloper.skillsnetwork.site/", "https://courses.ibmdevelopers.portals-dev.apset.xyz/", "https://courses.ibmeph.skillsnetwork.site/", "https://courses.icbc.skillsnetwork.site/", "https://courses.icicibank.skillsnetwork.site/", "https://courses.iciciprulife.skillsnetwork.site/", "https://courses.ide.skillsnetwork.site/", "https://courses.idem.skillsnetwork.site/", "https://courses.db2.skillsnetwork.site/", "https://courses.cc.imarticus.org/", "https://courses.impactlabs.skillsnetwork.site/", "https://courses.indiafirstlife.skillsnetwork.site/", "https://courses.informix.skillsnetwork.site/", "https://courses.infosys.skillsnetwork.site/", "https://courses.learn.intellipaat.com/", "https://courses.ironwood-1.skillsnetwork.site/", "https://courses.ironwood-migration.skillsnetwork.site/", "https://courses.ironwood-migration-oauth.skillsnetwork.site/", "https://courses.ironwood-migration-saml.skillsnetwork.site/", "https://courses.ironwood-migration2.skillsnetwork.site/", "https://courses.ironwood-migration3.skillsnetwork.site/", "https://courses.ironwood-test.skillsnetwork.site/", "https://courses.bdu.intela-edu.com/", "https://courses.itps.skillsnetwork.site/", "https://courses.izjgroup.com/", "https://courses.jacky-dev.skillsnetwork.site/", "https://courses.jacky-v1.skillsnetwork.site/", "https://courses.jacky-v2.skillsnetwork.site/", "https://courses.jacky-v3.skillsnetwork.site/", "https://courses.jacky-v4.skillsnetwork.site/", "https://courses.james-dev-a.skillsnetwork.site/", "https://courses.james-dev-os2.skillsnetwork.site/", "https://courses.james-redis-dev.skillsnetwork.site/", "https://courses.james-tang.skillsnetwork.site/", "https://courses.james-test.skillsnetwork.site/", "https://courses.james-test-hkg.skillsnetwork.site/", "https://james-test-with-ann.courses.cognitiveclass.ai/", "https://james-test-with-ann2.courses.cognitiveclass.ai/", "https://james-test-without-ann.courses.cognitiveclass.ai/", "https://james-test-without-ann2.courses.cognitiveclass.ai/", "https://courses.james-test3.skillsnetwork.site/", "https://courses.james-test4.skillsnetwork.site/", "https://courses.jamest-v1.skillsnetwork.site/", "https://courses.jason-v1.skillsnetwork.site/", "https://courses.jecrc.skillsnetwork.site/", "https://courses.cc.jigsawacademy.net/", "https://joshdev.courses.cognitiveclass.ai/", "https://courses.kiet.skillsnetwork.site/", "https://courses.kpmg-china.skillsnetwork.site", "https://courses.krupanidhi.skillsnetwork.site/", "https://courses.laureate.cognitiveclass.ai/", "https://courses.learnvista.skillsnetwork.site/", "https://courses.liceocontadora.skillsnetwork.site/", "https://courses.liceodigital.skillsnetwork.site/", "https://lighthouselabs.courses.cognitiveclass.ai/", "https://courses.linkpuertorico.skillsnetwork.site/", "https://courses.macai.skillsnetwork.site/", "https://courses.mandala.skillsnetwork.site/", "https://courses.manulife.cognitiveclass.ai/", "https://marcio.courses.cognitiveclass.ai/", "https://courses.mceme.skillsnetwork.site/", "https://courses.mds.cognitiveclass.ai/", "https://michael-dev.courses.cognitiveclass.ai/", "https://courses.michael-dev1.skillsnetwork.site/", "https://courses.michael-juniper.skillsnetwork.site/", "https://courses.michael-ocp.skillsnetwork.site/", "https://courses.michael-test.skillsnetwork.site/", "https://courses.michael-v3.skillsnetwork.site/", "https://courses.michael-v4.skillsnetwork.site/", "https://courses.michael-v5.skillsnetwork.site/", "https://courses.michael-v6.skillsnetwork.site/", "https://courses.michael-v7.skillsnetwork.site/", "https://courses.mindhand.cognitiveclass.ai/", "https://courses.missionreadyhq.cognitiveclass.ai/", "https://courses.mitibmwatsonailab.cognitiveclass.ai/", "https://courses.mku.skillsnetwork.site/", "https://courses.mlzc.skillsnetwork.site/", "https://courses.mlzc-syd.skillsnetwork.site/", "https://courses.modyu.skillsnetwork.site/", "https://courses.mohawkcollege.skillsnetwork.site/", "https://courses.mongo-migrate.skillsnetwork.site/", "https://courses.morpheuslatam.skillsnetwork.site/", "https://courses.movius.skillsnetwork.site/", "https://courses.mrcet.skillsnetwork.site/", "https://courses.mruniversity.skillsnetwork.site/", "https://courses.myclass.skillup.online/", "https://courses.n41.cognitiveclass.ai/", "https://courses.nce.skillsnetwork.site/", "https://courses.new-compete-test.skillsnetwork.site/", "https://courses.newcollar.cognitiveclass.ai/", "https://courses.nexplore.skillsnetwork.site/", "https://courses.nfs-test.skillsnetwork.site/", "https://courses.nift.skillsnetwork.site/", "https://courses.nonia.skillsnetwork.site/", "https://courses.northern.skillsnetwork.site/", "https://courses.npower.cognitiveclass.ai/", "https://courses.nrb.skillsnetwork.site/", "https://courses.nsic.cognitiveclass.ai/", "https://courses.ntuc.skillsnetwork.site/", "https://courses.okd-demo.skillsnetwork.site/", "https://courses.ol-staging.skillsnetwork.site/", "https://courses.openliberty.skillsnetwork.site/", "https://courses.openshift3.skillsnetwork.site/", "https://courses.openshift4-test.skillsnetwork.site/", "https://courses.openshifting.skillsnetwork.site/", "https://courses.persistent.skillsnetwork.site/", "https://courses.piet.skillsnetwork.site/", "https://pimco.courses.cognitiveclass.ai/", "https://courses.pingan.skillsnetwork.site/", "https://courses.pl-staging.skillsnetwork.site/", "https://courses.pnc.skillsnetwork.site/", "https://courses.polandlearns.skillsnetwork.site/", "https://courses.portal-gen2.skillsnetwork.site/", "https://courses.portal-gen2-01.skillsnetwork.site/", "https://courses.portal-gen2-02.skillsnetwork.site/", "https://courses.portal-gen2-03.skillsnetwork.site/", "https://courses.portal-gen2-04.skillsnetwork.site/", "https://courses.portal-gen2-05.skillsnetwork.site/", "https://courses.portal-gen2-06.skillsnetwork.site/", "https://courses.portal-gen2-07.skillsnetwork.site/", "https://courses.portal-gen2-08.skillsnetwork.site/", "https://courses.portal-gen2-09.skillsnetwork.site/", "https://courses.portal-gen2-10.skillsnetwork.site/", "https://courses.portal-gen2-11.skillsnetwork.site/", "https://courses.ptech-china.skillsnetwork.site/", "https://courses.ptech-china-dev.skillsnetwork.site/", "https://courses.ptech-china-stag.skillsnetwork.site/", "https://courses.ptech.ibmclientcenter.cn/", "https://courses.rbc.skillsnetwork.site/", "https://courses.rbcdigital.skillsnetwork.site/", "https://courses.rda.skillsnetwork.site/", "https://courses.recode.skillsnetwork.site/", "https://courses.red-poland-test.skillsnetwork.site/", "https://courses.red-portal-test.skillsnetwork.site/", "https://courses.repsol.skillsnetwork.site/", "https://courses.restorationhardware.skillsnetwork.site/", "https://courses.rgpv.skillsnetwork.site/", "https://courses.rhacademy.skillsnetwork.site/", "https://courses.rhas.skillsnetwork.site/", "https://courses.ricos.skillsnetwork.site/", "https://courses.rit.skillsnetwork.site/", "https://courses.rohit-dev.skillsnetwork.site/", "https://courses.rohit-test.skillsnetwork.site/", "https://courses.rrc.skillsnetwork.site/", "https://courses.rtc.cognitiveclass.ai/", "https://courses.rutgers.cognitiveclass.ai/", "https://courses.sa.edunetworld.com/", "https://courses.sait.skillsnetwork.site/", "https://courses.samshiksha.skillsnetwork.site/", "https://courses.samshiksha-courses.skillsnetwork.site/", "https://courses.samshiksha-dev.skillsnetwork.site/", "https://courses.sanofi.skillsnetwork.site", "https://courses.santanderdojo.skillsnetwork.site/", "https://courses.scotiabank.skillsnetwork.site/", "https://courses.secgadata.skillsnetwork.site/", "https://courses.seneca.skillsnetwork.site/", "https://courses.sgbau.skillsnetwork.site/", "https://courses.shell-demo.skillsnetwork.site/", "https://courses.shooliniuniversity.skillsnetwork.site/", "https://courses.skillsnet.simplilearn.com/", "https://sjtu.courses.bigdatauniversity.com.cn/", "https://courses.skillfloor.skillsnetwork.site/", "https://courses.skillsbuild.skillsnetwork.site/", "https://courses.learn.skillup.online/", "https://courses.skillup-dev.skillsnetwork.site/", "https://courses.sl.skillsnetwork.site/", "https://courses.smartbridge.skillsnetwork.site/", "https://courses.sn-faculty.skillsnetwork.site/", "https://courses.snu.skillsnetwork.site/", "https://courses.sogei.skillsnetwork.site/", "https://courses.sogei-dev.skillsnetwork.site/", "https://courses.sonofi.skillsnetwork.site/", "https://courses.sporange.skillsnetwork.site/", "https://courses.srmcem.skillsnetwork.site/", "https://courses.srmuh.skillsnetwork.site/", "https://courses.ssc-classroom.skillsnetwork.site/", "https://courses.startupacademy.skillsnetwork.site/", "https://courses.statestreet.skillsnetwork.site/", "https://courses.sterlite.skillsnetwork.site/", "https://courses.suncor.skillsnetwork.site/", "https://courses.apps.portals-dev-svl01.os.fyre.ibm.com/", "https://courses.svvv.skillsnetwork.site/", "https://courses.swiss-schools.skillsnetwork.site/", "https://courses.syd.cognitiveclass.ai/", "https://courses.tac.skillsnetwork.site/", "https://courses.talentio.skillsnetwork.site/", "https://tcs.courses.cognitiveclass.ai/", "https://courses.td.skillsnetwork.site/", "https://courses.tdbank.skillsnetwork.site/", "https://courses.tdcc.skillsnetwork.site/", "https://courses.technet.cognitiveclass.cn/", "https://courses.techstars.cognitiveclass.ai/", "https://courses.techusandpit.cognitiveclass.ai/", "https://courses.test.skillsnetwork.site/", "https://courses.test-migration.skillsnetwork.site/", "https://courses.apps.portals-dev-svl01.os.fyre.ibm.com/", "https://courses.test-suite.cognitiveclass.ai/", "https://courses.skills.thesmartbridge.com/", "https://courses.tonk.skillsnetwork.site/", "https://courses.travelers.skillsnetwork.site/", "https://twdc.courses.cognitiveclass.ai/", "https://courses.bdu.ua-scs.com/", "https://courses.ubisoft.cognitiveclass.ai/", "https://courses.unalm.skillsnetwork.site/", "https://courses.uofindia.skillsnetwork.site/", "https://courses.uom.skillsnetwork.site/", "https://courses.ups.skillsnetwork.site/", "https://courses.usbank.skillsnetwork.site/", "https://usvets.courses.cognitiveclass.ai/", "https://courses.utel.skillsnetwork.site/", "https://courses.uuu-inha.skillsnetwork.site/", "https://courses.uuu-knute.skillsnetwork.site/", "https://courses.uuu-maup.skillsnetwork.site/", "https://courses.uuu-nuu.skillsnetwork.site/", "https://courses.uuu-school.skillsnetwork.site/", "https://courses.uuu-uaschool.skillsnetwork.site/", "https://courses.uuu-uzschool.skillsnetwork.site/", "https://uwindsor.courses.cognitiveclass.ai/", "https://courses.vecvit.skillsnetwork.site/", "https://courses.verizon.cognitiveclass.ai/", "https://courses.virtualearn.skillsnetwork.site/", "https://courses.visa.skillsnetwork.site/", "https://courses.vistas.skillsnetwork.site/", "https://courses.vit-learning.skillsnetwork.site/", "https://courses.waketech.cognitiveclass.ai/", "https://waldenu.courses.cognitiveclass.ai/", "https://courses.wdc-dt.skillsnetwork.site/", "https://courses.western.cognitiveclass.ai/", "https://courses.techusandpit.cognitiveclass.ai/", "https://courses.wipro-demo.skillsnetwork.site/", "https://courses.withibm.cognitiveclass.ai/", "https://courses.wp-techu.skillsnetwork.site/", "https://courses.wsu.skillsnetwork.site/", "https://courses.xtressials.skillsnetwork.site/", "https://courses.yay.skillsnetwork.site/", "https://courses.yiban.skillsnetwork.site/", "https://courses.yl.skillsnetwork.site/", "https://courses.yl-ptech.skillsnetwork.site/", "https://courses.yl-public.skillsnetwork.site/", "https://zambon.courses.cognitiveclass.ai/", "https://courses.izjgroup.com/"]');
+      </script><iframe frameborder="1" height="0" scrolling="no" tabindex="-1" title="Noticeable Widget" width="0" class="noticeable-view_hidden noticeable-widget-view" allowfullscreen="" src="./Extracting Stock Data Using Webscraping_files/saved_resource(5).html" style="border: 0px; opacity: 0; overflow: hidden; user-select: none; visibility: hidden; z-index: -1; box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 40px; border-radius: 8px; height: 520px; width: 420px; position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(530px, 53px);" data-popper-placement="bottom-end"></iframe>
+    
+
+    
+      
+        <!-- Add base url into authorized domain list -->
+        <script>
+          if (typeof AUTHORIZED_PORTAL_LIST === "undefined"){
+            var AUTHORIZED_PORTAL_LIST = [];
+          }
+          AUTHORIZED_PORTAL_LIST.push('https://courses.cognitiveclass.ai/');
+        </script>
+      
+    
+
+    
+    <link rel="stylesheet" href="./Extracting Stock Data Using Webscraping_files/jquery.fontpicker.min.css">
+    <link rel="stylesheet" type="text/css" href="./Extracting Stock Data Using Webscraping_files/spectrum.min.css">
+    <script src="./Extracting Stock Data Using Webscraping_files/jquery.min.js.download"></script>
+    <script src="./Extracting Stock Data Using Webscraping_files/jquery.font-accessibility.min.js.download"></script>
+    <script src="./Extracting Stock Data Using Webscraping_files/spectrum.min.js.download">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="./Extracting Stock Data Using Webscraping_files/jquery.fontpicker.js.download"></script>
+  
+  
+    
+  <div class="main">
+    
+      
+        <style>
+  /* Google recommends inlining small CSS */
+
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Toggle Styles */
+
+  #sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 250px;
+    top: 50px;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #222;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+  }
+
+  /* Sidebar Styles */
+
+  .sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    list-style: none;
+    font-weight: normal;
+  }
+
+  .sidebar-nav li {
+    text-indent: 20px;
+    line-height: 30px;
+    font-weight: lighter;
+    font-size: 16px;
+  }
+
+  .sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #CDCDCD;
+  }
+
+  .sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+  }
+
+  .sidebar-nav li a:active,
+  .sidebar-nav li a:focus {
+    text-decoration: none;
+  }
+
+  .sidebar-nav > .sidebar-label {
+    text-indent: 20px;
+    font-size: 16px;
+    line-height: 25px;
+    font-weight: bold;
+    padding-top: 10px;
+  }
+
+  .sidebar-nav > .sidebar-label a {
+    color: #CDCDCD;
+  }
+
+  .sidebar-nav > .sidebar-label a:hover {
+    color: #CDCDCD;
+    background: none;
+  }
+
+  @media (min-width: 768px) {
+    #sidebar-wrapper {
+      top: 50px
+    }
+  }
+
+  #sidebar-wrapper.toggled {
+    width: 0;
+  }
+</style>
+
+<div id="sidebar-wrapper" class="toggled">
+  
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-label"><a>Manage Data</a></li>
+    <li><a href="https://labs.cognitiveclass.ai/">Home</a></li>
+    
+      <li><a href="https://labs.cognitiveclass.ai/tools/my-data/">My Data</a></li>
+    
+    
+      <li><a href="https://labs.cognitiveclass.ai/tools/datasette/-/sn">Datasette - Practice and Explore SQL (Beta)</a></li>
+    
+
+
+    
+      <li class="sidebar-label"><a>Prepare Data</a></li>
+      
+      
+        <li><a href="https://vision.skills.network/">CV Studio (Alpha)</a></li>
+      
+    
+
+
+
+    <li class="sidebar-label"><a>Build Analytics</a></li>
+    
+      <li><a href="https://labs.cognitiveclass.ai/tools/jupyterlab/">JupyterLab</a></li>
+    
+    
+    
+      <li><a href="https://labs.cognitiveclass.ai/tools/rstudio-ide/">RStudio IDE</a></li>
+    
+    
+
+    
+
+    
+    <li class="sidebar-label"><a>Develop Applications</a></li>
+      
+      
+        <li><a href="https://labs.cognitiveclass.ai/tools/theiadocker/">Cloud IDE (With Docker)</a></li>
+      
+      
+        <li><a href="https://labs.cognitiveclass.ai/tools/theiaopenshift/">Cloud IDE (With OpenShift)</a></li>
+      
+    
+
+    <li class="sidebar-label"><a>Resources</a></li>
+    
+      <li><a rel="noopener" href="https://labs.cognitiveclass.ai/tools/jupyterlab/lab/tree/labs/PY0220EN/Final_Assignment_Library.ipynb?lti=true#" data-uv-trigger="smartvote" data-uv-scanned="true" id="uv-2">Submit an idea</a></li>
+    
+    <li><a rel="noopener" target="_blank" href="https://cognitiveclass.ai/blog/">Blog</a></li>
+    
+      <li><a rel="noopener" target="_blank" href="https://labs.cognitiveclass.ai/kb">Knowledge Base</a>
+      </li>
+      <li><a rel="noopener" target="_blank" href="https://labs.cognitiveclass.ai/forum">Feedback Forum</a></li>
+      <li><a rel="noopener" target="_blank" href="https://labs.cognitiveclass.ai/support">Support</a></li>
+    
+    <li><a rel="noopener" target="_blank" href="https://courses.cognitiveclass.ai/">Online Learning</a></li>
+    <li><a href="https://labs.cognitiveclass.ai/changelog">What's new</a></li>
+
+    <li class="sidebar-label"><a>Terms</a></li>
+    <li><a rel="noopener" target="_blank" href="https://cognitiveclass.ai/legal/">Terms of Use</a></li>
+    <li><a rel="noopener" target="_blank" href="https://cognitiveclass.ai/legal/#privacypolicy">Privacy Notice</a></li>
+  </ul>
+</div>
+      
+    
+    
+      
+        <div class="page toggled page--maximized">
+      
+    
+    
+  
+    
+
+    
+    
+
+    <iframe id="tool_iframe" name="tool_iframe_name" src="./Extracting Stock Data Using Webscraping_files/oauth_login.html" onload="iframeLoaded()" allow="microphone; camera" style="width: 100%; height: calc(100% - 50px);"></iframe>
+    
+
+  
+
+
+    
+      </div>
+    
+  </div>
+
+  
+
+
+
+    
+
+      
+  
+    <script type="text/javascript">
+      var sidebarConfig = {
+        minimized: true
+      };
+    </script>
+  
+
+  <script src="./Extracting Stock Data Using Webscraping_files/bundle.min.js.download"></script>
+
+      <script>
+
+        function applyFont(element, fontSpec) {
+
+          // Split font into family and weight/style
+          var tmp = fontSpec.split(':'),
+          family = tmp[0],
+          variant = tmp[1] ||'400',
+          weight = parseInt(variant,10),
+          italic = /i$/.test(variant);
+
+          // Set selected font on paragraphs
+          var css = {
+
+            fontFamily:"'" + family +"'",
+
+            fontWeight: weight,
+
+            fontStyle: italic ?'italic' :'normal'
+          };
+
+          $(element).css(css);
+
+        }
+
+        $(window).on("load", function(){
+          if ($( "#myFontPicker" ).length) {
+
+            $('#myFontPicker')
+              .fontpicker()
+              .on('change', function() {
+              applyFont('#html-content', this.value);
+              //Get existing font information and update
+              let newFont = this.value.substring(0, this.value.length - 4);
+              if (localStorage.getItem("fontProperties") !== null) {
+                let jsonFontPropertiesString = localStorage.getItem("fontProperties");
+                let fontProperties = JSON.parse(jsonFontPropertiesString);
+                fontProperties.FontFamily = newFont;
+                localStorage.setItem("fontProperties", JSON.stringify(fontProperties));
+              }
+              else {
+
+                var fontProperties = {
+                };
+                if (document.getElementsByTagName("p").length > 0) {
+                  fontProperties.ParagraphFont = document.getElementsByTagName("p")[0].style.fontSize;
+                }
+                if (document.getElementsByTagName("h1").length > 0) {
+                  fontProperties.Header1Font = document.getElementsByTagName("h1")[0].style.fontSize;
+                }
+                if (document.getElementsByTagName("h2")) {
+                  fontProperties.Header2Font = document.getElementsByTagName("h2")[0].style.fontSize;
+                }
+                if (document.getElementsByTagName("h3").length > 0) {
+                  fontProperties.Header3Font = document.getElementsByTagName("h3")[0].style.fontSize;
+                }
+                if (document.getElementsByTagName("pre").length > 0) {
+                  fontProperties.PreFont = document.getElementsByTagName("pre")[0].style.fontSize;
+                }
+                fontProperties.StepperFont = document.getElementsByClassName("stepper")[0].style.fontSize;
+                fontProperties.FontFamily = newFont;
+
+                localStorage.setItem("fontProperties", JSON.stringify(fontProperties));
+              }
+
+            });
+          }
+
+
+        });
+
+      </script>
+
+      <!-- minimize sidebar -->
+      <script>
+          $(function () {
+              $("#menu-toggle").click(function(e) {
+                  e.preventDefault();
+                  $("#sidebar-wrapper").toggleClass("toggled");
+                  $(".page").toggleClass("toggled");
+              });
+          });
+      </script>
+
+    
+
+      <script defer="">
+        var appcuesLoader = document.createElement("script");
+
+        appcuesLoader.addEventListener("load", function() {
+          function configureAppcues() {
+            // Adblockers can block Appcues
+            if (Appcues) {
+              
+                Appcues.identify('isoaojennife');
+              
+            }
+          }
+
+          if (Appcues) {
+            configureAppcues();
+          } else {
+            setTimeout(function(){ configureAppcues(); }, 500);
+          }
+        });
+
+        appcuesLoader.src = 'https://fast.appcues.com/37753.js';
+        // Defer is better than async because it doesn't block rendering
+        appcuesLoader.defer = true;
+        document.getElementsByTagName("script")[0].parentNode.appendChild(appcuesLoader);
+      </script>
+
+    
+
+    
+    
+      <!-- start UserVoice -->
+      <script type="text/javascript" defer="">
+        // Once the document is loaded but not stylesheets or subdocuments
+        window.addEventListener('DOMContentLoaded', function() {
+          var api_key = 'O5SLs1K1RfWhBYkHvMaXTg'; // pragma: whitelist secret
+          var forum_id = '246775';
+
+          // Include the UserVoice JavaScript SDK (only needed once on a page)
+          UserVoice = window.UserVoice || [];
+          (function () {
+            var uv = document.createElement('script');
+            uv.type = 'text/javascript';
+            uv.async = true;
+            uv.src = 'https://widget.uservoice.com/' + api_key + '.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(uv, s)
+          })();
+
+          
+            UserVoice.push(['setSSO', 'QwW3mAK7ah/9kNOWHB6lVwi58P2YdDFgcRnhU0KoJG%2BiIICvVTaLPUDm4tYsm/83//XeAjZj6NthAZxzU%2BFDqzBk9KZHLCtsKo2YccCdS4Bc4SyOPi7JGIL1LcmLv%2Bc/5BuSE5Kr5VtgeIlZ4v2CkKmcmlb%2BuLkxVNZaQGON/wdipdoa8DGO2clq2B97qwpU']);
+          
+
+          //
+          // UserVoice Javascript SDK developer documentation:
+          // https://www.uservoice.com/o/javascript-sdk
+          //
+          UserVoice.push(['showTab', 'classic_widget', {
+            mode: 'full',
+            primary_color: '#19496A',
+            link_color: '#007dbf',
+            default_mode: 'support',
+            tab_label: "Support/Feedback",
+            tab_color: '#19496A',
+            tab_position: 'middle-right',
+            tab_inverted: false
+          }]);
+
+          // Post new ideas to IBM Data Scientist Workbench forum
+          UserVoice.push(['set', 'forum_id', forum_id]);
+
+          
+            UserVoice.push(['identify', {
+              email: 'isoaojennifer@gmail.com',
+              name: ' '
+            }]);
+          
+        });
+
+      </script>
+      <!-- end UserVoice -->
+    
+
+    
+  
+<div id="uvTab" style="background: url(&quot;https://widget.uservoice.com/pkg/clients/widget2/tab-right-dark-no-bullhorn-6c8fc4d589a9d68b16c89b8bd810aee48f11a826d292d22d2b5491cd2a072495.png&quot;) 50% 0px no-repeat rgb(25, 73, 106); border-top: 1px solid rgb(255, 255, 255); border-bottom: 1px solid rgb(255, 255, 255); border-left: 1px solid rgb(255, 255, 255); border-image: initial; border-right: none; border-radius: 4px 0px 0px 4px; box-shadow: rgba(255, 255, 255, 0.25) 1px 1px 1px inset, rgba(0, 0, 0, 0.5) 0px 1px 2px; font: bold 14px / 1em Arial, sans-serif; position: fixed; right: 0px; top: 50%; z-index: 9999; margin-top: -81px;" class="uv-tab uv-slide-right " aria-label="Open Feedback Widget"><a id="uvTabLabel" style="background-color: transparent; display:block;padding:10px 5px 10px 5px;text-decoration:none;" href="javascript:void(0);"><img src="./Extracting Stock Data Using Webscraping_files/feedback-tab.png" alt="Support/Feedback" style="border:0; background-color: transparent; padding:0; margin:0;"></a></div><div></div><div></div></body></html>
